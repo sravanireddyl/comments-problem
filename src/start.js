@@ -1,18 +1,8 @@
-const apiBase = 'https://api.github.com'
 const argv = require('yargs').argv
-const axios = require('axios')
-const config = require('./config')
 const chalk = require('chalk')
-const http = axios.create({
-  baseURL: apiBase,
-  headers: {
-    Authorization: `token ${config.GITHUB_PERSONAL_ACCESS_TOKEN}`,
-  },
-})
-
-async function printCommitCount() {
+const getComments = require('./helpers/comments');
+async function start() {
   try {
-
     const repo = argv.repo;
     const period = argv.period;
     if (repo) {
@@ -30,16 +20,16 @@ async function printCommitCount() {
         date.setDate(date.getDate() - time)
         isoString = date.toISOString().replace(/(\..*)/g, 'Z')
       }
-      //start(repo, isoString);
-      console.log(repo);
-      console.log(isoString)
+      const data = await getComments(repo, isoString);
+      console.log(data)
     } else {
       error('\nInvalid repo, please try again')
     }
   } catch (err) {
+    console.log(err)
     console.error(chalk.red(err))
     console.dir(err.response.data, { colors: true, depth: 4 })
   }
 }
 
-printCommitCount();
+start();
