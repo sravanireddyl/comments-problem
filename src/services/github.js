@@ -1,5 +1,5 @@
-const getComments = require('./getComments')
-const checkHeaders = require('./header')
+const getComments = require('../helpers/getComments')
+const checkHeaders = require('../helpers/header')
 const get = require('./get')
 const chalk = require('chalk')
 const github = {

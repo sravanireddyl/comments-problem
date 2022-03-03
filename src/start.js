@@ -1,6 +1,6 @@
 const argv = require('yargs').argv
 const chalk = require('chalk')
-const getComments = require('./helpers/comments')
+const getComments = require('./services/comments')
 const output = require('./helpers/output')
 async function start() {
   try {
