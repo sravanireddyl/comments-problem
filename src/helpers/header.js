@@ -1,5 +1,5 @@
 const path = require('./path')
-const chalk =require('chalk');
+const chalk = require('chalk')
 
 module.exports = async function(headers, direction, date) {
   let nextURL = ''

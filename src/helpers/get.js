@@ -1,7 +1,7 @@
 const axios = require('axios')
 const config = require('../config')
 
-const chalk =require('chalk');
+const chalk = require('chalk')
 
 // Github API URL
 const baseURL = 'https://api.github.com/repos/'
@@ -17,7 +17,6 @@ const http = axios.create({
 // general purpose "GET"
 module.exports = async function(url) {
   try {
-  
     // Send URL request
     let request = await http.get(url)
 
@@ -25,6 +24,5 @@ module.exports = async function(url) {
     return request
   } catch (e) {
     console.error(chalk.red(e))
-    
   }
 }

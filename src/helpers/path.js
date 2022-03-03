@@ -1,5 +1,5 @@
 const get = require('../helpers/get')
-const chalk =require('chalk');
+const chalk = require('chalk')
 module.exports = async function(next, last, date) {
   let routes = []
   let logins = []
@@ -36,13 +36,15 @@ module.exports = async function(next, last, date) {
       let urls = routes.sort().reverse()
 
       // Fetch every URL simulataneously
-      let jsonArray = await Promise.all(urls.map(url => get(url))).catch(e => {
-        console.error(chalk.red(e))
-      })
+      let jsonArray = await Promise.all(urls.map((url) => get(url))).catch(
+        (e) => {
+          console.error(chalk.red(e))
+        },
+      )
 
       // Map to logins array
-      await jsonArray.map(json => {
-        json.data.map(data => {
+      await jsonArray.map((json) => {
+        json.data.map((data) => {
           let fetchDate = new Date(data.created_at)
 
           // Filter incoming JSON by Date/Time
@@ -54,14 +56,14 @@ module.exports = async function(next, last, date) {
     } else {
       // Fetch every URL simulataneously
       let jsonArray = await Promise.all(
-        routes.sort().map(route => get(route)),
-      ).catch(e => {
+        routes.sort().map((route) => get(route)),
+      ).catch((e) => {
         console.error(chalk.red(e))
       })
 
       // Map to logins array
-      await jsonArray.map(json => {
-        json.data.map(data => {
+      await jsonArray.map((json) => {
+        json.data.map((data) => {
           if (data.user['login']) {
             logins.push(data.user['login'])
           }
@@ -72,6 +74,5 @@ module.exports = async function(next, last, date) {
     return logins
   } catch (e) {
     console.error(chalk.red(e))
-     
   }
 }

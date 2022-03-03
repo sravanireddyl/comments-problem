@@ -6,36 +6,35 @@
   Ex: 'randomUser'
 */
 
-
 module.exports = function(init, login, comments, issues, pulls, stats, uniq) {
   if (init === true) {
     console.log('-----')
 
-    comments.map(i => {
+    comments.map((i) => {
       if (i.login === login) {
         console.dir(i, { colors: true, depth: 4 })
       }
     })
 
-    issues.map(i => {
+    issues.map((i) => {
       if (i.login === login) {
         console.dir(i, { colors: true, depth: 4 })
       }
     })
 
-    pulls.map(i => {
+    pulls.map((i) => {
       if (i.login === login) {
         console.dir(i, { colors: true, depth: 4 })
       }
     })
 
-    stats.map(i => {
+    stats.map((i) => {
       if (i.login === login) {
         console.dir(i, { colors: true, depth: 4 })
       }
     })
 
-    uniq.map(i => {
+    uniq.map((i) => {
       if (i.login === login) {
         console.log('')
         res('COMBINED DATA IS ...')
