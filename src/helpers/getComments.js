@@ -29,6 +29,6 @@ module.exports = async function(logins) {
 
     return comments
   } catch (e) {
-    consolelog(e)
+    console.log(e)
   }
 }

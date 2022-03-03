@@ -1,6 +1,6 @@
 const leftPad = require('left-pad')
 
-module.exports = function (users) {
+module.exports = function(users) {
   // Log empty lines for readability
   console.log('')
   console.log('')

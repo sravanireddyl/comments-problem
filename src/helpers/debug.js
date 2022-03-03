@@ -37,7 +37,7 @@ module.exports = function(init, login, comments, issues, pulls, stats, uniq) {
     uniq.map((i) => {
       if (i.login === login) {
         console.log('')
-        res('COMBINED DATA IS ...')
+        console.log('COMBINED DATA IS ...')
         console.dir(i, { colors: true, depth: 4 })
         console.log('')
       }

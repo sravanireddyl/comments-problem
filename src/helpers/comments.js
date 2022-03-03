@@ -3,7 +3,7 @@ const github = require('./github')
 const debug = require('./debug')
 const chalk = require('chalk')
 
-module.exports = async function (repo, isoString) {
+module.exports = async function(repo, isoString) {
   // Fetch Comments
   //const data = await comments(repo, isoString)
 

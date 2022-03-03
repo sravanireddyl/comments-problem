@@ -15,6 +15,7 @@ async function start() {
         days = period
       }
       // convert "days" to number
+      // eslint-disable-next-line radix
       const time = parseInt(days, 0)
       let isoString = ''
 

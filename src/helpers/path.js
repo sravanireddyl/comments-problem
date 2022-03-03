@@ -7,7 +7,9 @@ module.exports = async function(next, last, date) {
   const end = /(&per_page=).*/
   const pattern = /.*(\?page=)|(&per_page=).*/
   const regex = new RegExp(pattern, 'g')
+  // eslint-disable-next-line radix
   const nextInt = parseInt(next.replace(regex, ''), 0)
+  // eslint-disable-next-line radix
   const lastInt = parseInt(last.replace(regex, ''), 0)
   const diff = lastInt - nextInt
 
