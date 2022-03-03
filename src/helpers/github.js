@@ -5,6 +5,7 @@ const config = require('../config')
 const getComments = require('./getComments')
 const checkHeaders = require('./header')
 const get = require('./get')
+const chalk =require('chalk');
 
 github.comments = async function (route, since) {
     
@@ -45,7 +46,8 @@ github.comments = async function (route, since) {
 
         return comments
     } catch (e) {
-        console.log(e)
+    console.error(chalk.red(e))
+       
     }
 
 }
@@ -83,8 +85,7 @@ github.since = async function(route) {
   
       return comments
     } catch (e) {
-        console.log(e);
-
+        console.error(chalk.red(e))
     }
   }
   
@@ -110,7 +111,7 @@ github.since = async function(route) {
   
       return totals
     } catch (e) {
-     console.log(e);
+        console.error(chalk.red(e))
     }
   }
 module.exports = github

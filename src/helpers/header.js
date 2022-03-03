@@ -1,4 +1,5 @@
 const path = require('./path')
+const chalk =require('chalk');
 
 module.exports = async function(headers, direction, date) {
   let nextURL = ''
@@ -47,6 +48,6 @@ module.exports = async function(headers, direction, date) {
       return hasCallback
     }
   } catch (e) {
-   console.log(e)
+    console.error(chalk.red(e))
   }
 }

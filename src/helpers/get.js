@@ -1,6 +1,7 @@
 const axios = require('axios')
 const config = require('../config')
 
+const chalk =require('chalk');
 
 // Github API URL
 const baseURL = 'https://api.github.com/repos/'
@@ -23,6 +24,7 @@ module.exports = async function(url) {
     // Return resolved Promise
     return request
   } catch (e) {
-    console.log(e)
+    console.error(chalk.red(e))
+    
   }
 }

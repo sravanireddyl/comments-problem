@@ -6,10 +6,13 @@ async function start() {
   try {
     const repo = argv.repo;
     const period = argv.period;
+    let days = 0;
     if (repo) {
       // validate "--period"
-      if (period && period.includes('d')) {
+      if (typeof period === 'string' && period.includes('d')) {
         days = period.replace(/([d])/g, '')
+      }else {
+        days = period;
       }
       // convert "days" to number
       const time = parseInt(days, 0)
@@ -27,9 +30,8 @@ async function start() {
       console.log('\nInvalid repo, please try again')
     }
   } catch (err) {
-    console.log(err)
     console.error(chalk.red(err))
-    
+
   }
 }
 

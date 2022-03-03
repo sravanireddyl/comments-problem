@@ -1,6 +1,8 @@
 const path = require('./constants');
 const github = require('./github');
-const debug = require('./debug')
+const debug = require('./debug');
+const chalk = require('chalk');
+
 module.exports = async function (repo, isoString) {
 
     // Fetch Comments
@@ -22,7 +24,8 @@ module.exports = async function (repo, isoString) {
             github.since(repo + path.pulls + since),
             github.stats(repo + path.stats),
         ]).catch(e => {
-            console.log(e)
+            console.error(chalk.red(e))
+
         })
         // If callbacks are not empty,
         // add their contents to generic data wrapper
@@ -95,7 +98,8 @@ module.exports = async function (repo, isoString) {
 
         return sortedUsers
     } catch (err) {
-        console.log(err)
+        console.error(chalk.red(err))
+
     }
 
 }

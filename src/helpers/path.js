@@ -1,5 +1,5 @@
 const get = require('../helpers/get')
-
+const chalk =require('chalk');
 module.exports = async function(next, last, date) {
   let routes = []
   let logins = []
@@ -37,7 +37,7 @@ module.exports = async function(next, last, date) {
 
       // Fetch every URL simulataneously
       let jsonArray = await Promise.all(urls.map(url => get(url))).catch(e => {
-        console.log(e)
+        console.error(chalk.red(e))
       })
 
       // Map to logins array
@@ -56,7 +56,7 @@ module.exports = async function(next, last, date) {
       let jsonArray = await Promise.all(
         routes.sort().map(route => get(route)),
       ).catch(e => {
-        console.log(e)
+        console.error(chalk.red(e))
       })
 
       // Map to logins array
@@ -71,7 +71,7 @@ module.exports = async function(next, last, date) {
 
     return logins
   } catch (e) {
-    console.log(e)
+    console.error(chalk.red(e))
      
   }
 }
