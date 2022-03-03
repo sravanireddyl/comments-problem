@@ -23,7 +23,6 @@ module.exports = async function(url) {
     // Return resolved Promise
     return request
   } catch (e) {
-    error(e)
-    stacktrace(e)
+    console.log(e)
   }
 }

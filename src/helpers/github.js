@@ -8,12 +8,14 @@ const get = require('./get')
 
 github.comments = async function (route, since) {
     
-  const date = new Date(since)
+  const date = new Date(since);
+  let logins = []
+  let comments =[];
   firstLogins = []
     try {
         let response = await get(route);
         // If we have a response
-        if (response.statusText === 'OK') {
+        if (response && response.statusText === 'OK') {
             const headers = response.headers
 
             // Fetch last page and reverse
@@ -57,7 +59,7 @@ github.since = async function(route) {
       const json = await get(route)
     
       // If we have a response
-      if (json.statusText === 'OK') {
+      if (json && json.statusText === 'OK') {
         const headers = json.headers
         remainingLogins = await checkHeaders(headers, 'since', false)
   
@@ -93,7 +95,7 @@ github.since = async function(route) {
       const json = await get(route)
   
       // If we have a response
-      if (json.statusText === 'OK') {
+      if (json && json.statusText === 'OK') {
         // Create JSON schema template
         await json.data.map(stats => {
           if (stats.author['login']) {

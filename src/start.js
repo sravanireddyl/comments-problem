@@ -24,12 +24,12 @@ async function start() {
       const data = await getComments(repo, isoString);
       output(data);
     } else {
-      error('\nInvalid repo, please try again')
+      console.log('\nInvalid repo, please try again')
     }
   } catch (err) {
     console.log(err)
     console.error(chalk.red(err))
-    console.dir(err.response.data, { colors: true, depth: 4 })
+    
   }
 }
 
