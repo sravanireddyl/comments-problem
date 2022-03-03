@@ -15,14 +15,18 @@ const http = axios.create({
 })
 
 // general purpose "GET"
-module.exports = async function(url) {
-  try {
-    // Send URL request
-    let request = await http.get(url)
+const get = {
+  async get(url) {
+    try {
+      // Send URL request
+      let request = await http.get(url)
 
-    // Return resolved Promise
-    return request
-  } catch (e) {
-    console.error(chalk.red(e))
-  }
+      // Return resolved Promise
+      return request
+    } catch (e) {
+      console.error(chalk.red(e))
+    }
+  },
 }
+
+module.exports = get

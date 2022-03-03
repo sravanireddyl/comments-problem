@@ -10,13 +10,13 @@ const github = {
     let firstLogins = []
     let remainingLogins = []
     try {
-      let response = await get(route)
+      let response = await get.get(route)
       // If we have a response
       if (response && response.statusText === 'OK') {
         const headers = response.headers
 
         // Fetch last page and reverse
-        remainingLogins = await checkHeaders(headers, 'continuous', date)
+        remainingLogins = await checkHeaders.header(headers, 'continuous', date)
 
         // Add results to logins array
         if (remainingLogins) {
@@ -37,7 +37,7 @@ const github = {
         logins = [...logins, ...firstLogins]
 
         // Count how many logins in array as a comment
-        comments = await getComments(logins)
+        comments = await getComments.getComment(logins)
       }
 
       return comments
@@ -52,12 +52,12 @@ const github = {
     let remainingLogins = []
 
     try {
-      const json = await get(route)
+      const json = await get.get(route)
 
       // If we have a response
       if (json && json.statusText === 'OK') {
         const headers = json.headers
-        remainingLogins = await checkHeaders(headers, 'since', false)
+        remainingLogins = await checkHeaders.header(headers, 'since', false)
 
         // Add results to logins array
         if (remainingLogins) {
@@ -74,7 +74,7 @@ const github = {
         logins = [...logins, ...firstLogins]
 
         // Count how many logins in array as a comment
-        comments = await getComments(logins)
+        comments = await getComments.getComment(logins)
       }
 
       return comments
@@ -86,7 +86,7 @@ const github = {
     const totals = []
 
     try {
-      const json = await get(route)
+      const json = await get.get(route)
 
       // If we have a response
       if (json && json.statusText === 'OK') {
@@ -106,7 +106,7 @@ const github = {
     } catch (e) {
       console.error(chalk.red(e))
     }
-  }
+  },
 }
 
 module.exports = github

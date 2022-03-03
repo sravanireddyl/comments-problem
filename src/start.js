@@ -25,8 +25,8 @@ async function start() {
         date.setDate(date.getDate() - time)
         isoString = date.toISOString().replace(/(\..*)/g, 'Z')
       }
-      const data = await getComments(repo, isoString)
-      output(data)
+      const data = await getComments.comments(repo, isoString)
+      output.output(data)
     } else {
       console.log('\nInvalid repo, please try again')
     }
