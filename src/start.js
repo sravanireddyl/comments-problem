@@ -1,6 +1,7 @@
 const argv = require('yargs').argv
 const chalk = require('chalk')
 const getComments = require('./helpers/comments');
+const output = require('./helpers/output')
 async function start() {
   try {
     const repo = argv.repo;
@@ -21,7 +22,7 @@ async function start() {
         isoString = date.toISOString().replace(/(\..*)/g, 'Z')
       }
       const data = await getComments(repo, isoString);
-      console.log(data)
+      output(data);
     } else {
       error('\nInvalid repo, please try again')
     }
