@@ -1,5 +1,5 @@
 const unique = require('../helpers/unique')
-const checkHeaders = require('../helpers/header')
+const header = require('../helpers/header')
 const get = require('./get')
 const chalk = require('chalk')
 
@@ -23,7 +23,7 @@ const github = {
         const headers = response.headers
 
         // Fetch last page and reverse
-        remainingLogins = await checkHeaders.header(headers, 'continuous', date)
+        remainingLogins = await header.checkHeader(headers, 'continuous', date)
 
         // Add results to logins array
         if (remainingLogins) {
@@ -68,7 +68,7 @@ const github = {
       // If we have a response
       if (json && json.statusText === 'OK') {
         const headers = json.headers
-        remainingLogins = await checkHeaders.header(headers, 'since', false)
+        remainingLogins = await header.checkHeader(headers, 'since', false)
 
         // Add results to logins array
         if (remainingLogins) {

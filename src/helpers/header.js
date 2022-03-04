@@ -2,7 +2,13 @@ const path = require('./path')
 const chalk = require('chalk')
 
 const header = {
-  async header(headers, direction, date) {
+  /**
+   * Check for remaining subsequent calls deoending on response headers.
+   * @param  {} headers
+   * @param  {} direction
+   * @param  {} date
+   */
+  async checkHeader(headers, direction, date) {
     let nextURL = ''
     let lastURL = ''
     let next = ''
@@ -44,7 +50,6 @@ const header = {
         }
       }
 
-      // Return array from "path()" function
       if (hasCallback) {
         return hasCallback
       }
