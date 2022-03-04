@@ -2,6 +2,7 @@ const getComments = require('../helpers/getComments')
 const checkHeaders = require('../helpers/header')
 const get = require('./get')
 const chalk = require('chalk')
+
 const github = {
   async comments(route, since) {
     const date = new Date(since)

@@ -1,7 +1,8 @@
 const argv = require('yargs').argv
 const chalk = require('chalk')
-const getComments = require('./services/comments')
+const Comments = require('./services/comments')
 const output = require('./helpers/output')
+
 async function start() {
   try {
     const repo = argv.repo
@@ -25,7 +26,7 @@ async function start() {
         date.setDate(date.getDate() - time)
         isoString = date.toISOString().replace(/(\..*)/g, 'Z')
       }
-      const data = await getComments.comments(repo, isoString)
+      const data = await Comments.getCount(repo, isoString)
       output.output(data)
     } else {
       console.log('\nInvalid repo, please try again')

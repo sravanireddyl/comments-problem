@@ -1,5 +1,6 @@
 const get = require('../services/get')
 const chalk = require('chalk')
+
 const path = {
   async path(next, last, date) {
     let routes = []

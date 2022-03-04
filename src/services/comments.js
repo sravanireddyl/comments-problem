@@ -2,8 +2,12 @@ const path = require('../constants/routes')
 const github = require('./github')
 const debug = require('../helpers/debug')
 const chalk = require('chalk')
+/* Get Comments data  from git hub for comments stats pulls and issues
+ sort data group by unique users
+*/
+
 const comments = {
-  async comments(repo, isoString) {
+  async getCount(repo, isoString) {
     let responses = []
     let users = []
     let uniq = []

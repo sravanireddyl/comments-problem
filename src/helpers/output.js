@@ -1,9 +1,9 @@
 const leftPad = require('left-pad')
+
 const output = {
   async output(users) {
     // Log empty lines for readability
-    console.log('')
-    console.log('')
+    console.log('\n')
     let spaces
     // Print to command line
     if (users && users[0]) {

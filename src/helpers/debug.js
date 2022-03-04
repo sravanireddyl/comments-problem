@@ -5,6 +5,7 @@
 
   Ex: 'randomUser'
 */
+
 const debug = {
   async debug(init, login, comments, issues, pulls, stats, uniq) {
     if (init === true) {
