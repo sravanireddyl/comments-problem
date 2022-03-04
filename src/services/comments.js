@@ -1,12 +1,18 @@
 const path = require('../constants/routes')
 const github = require('./github')
-const debug = require('../helpers/debug')
 const chalk = require('chalk')
 /* Get Comments data  from git hub for comments stats pulls and issues
  sort data group by unique users
 */
 
 const comments = {
+
+  /**
+   * Fetch comments by using repo and isoString
+   * Handle response , sort and group by Users
+   * @param  {} repo
+   * @param  {} isoString
+   */
   async getCount(repo, isoString) {
     let responses = []
     let users = []
@@ -88,16 +94,10 @@ const comments = {
 
       // Sort by Comments
       let sortedUsers = await uniq.sort((a, b) => b.comments - a.comments)
-
-      // Set first argument to "true" to
-      // debug our returned data
-      sortedUsers.reverse().map((user) => {
-        debug.debug(false, user.login, comments, issues, pulls, stats, uniq)
-      })
-
       return sortedUsers
     } catch (err) {
       console.error(chalk.red(err))
+
     }
   },
 }

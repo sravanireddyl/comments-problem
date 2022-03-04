@@ -1,9 +1,15 @@
-const getComments = require('../helpers/getComments')
+const unique = require('../helpers/unique')
 const checkHeaders = require('../helpers/header')
 const get = require('./get')
 const chalk = require('chalk')
 
 const github = {
+  /**
+   * 
+   * @param  {} route
+   * @param  {} since
+   * Gets comments from GitHub
+   */
   async comments(route, since) {
     const date = new Date(since)
     let logins = []
@@ -38,7 +44,7 @@ const github = {
         logins = [...logins, ...firstLogins]
 
         // Count how many logins in array as a comment
-        comments = await getComments.getComment(logins)
+        comments = await unique.getUniqueComments(logins)
       }
 
       return comments
@@ -46,6 +52,10 @@ const github = {
       console.error(chalk.red(e))
     }
   },
+  /**
+   * Gets pulls from GitHub
+   * @param  {} route
+   */
   async since(route) {
     let logins = []
     let comments = []
@@ -75,7 +85,7 @@ const github = {
         logins = [...logins, ...firstLogins]
 
         // Count how many logins in array as a comment
-        comments = await getComments.getComment(logins)
+        comments = await unique.getUniqueComments(logins)
       }
 
       return comments
@@ -83,6 +93,10 @@ const github = {
       console.error(chalk.red(e))
     }
   },
+  /**
+   * Gets Stats frm GitHub
+   * @param  {} route
+   */
   async stats(route) {
     const totals = []
 

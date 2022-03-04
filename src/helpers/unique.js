@@ -1,5 +1,5 @@
-const getComment = {
-  async getComment(logins) {
+const unique = {
+  async getUniqueComments(logins) {
     const comments = []
     const uniqueLogins = []
 
@@ -17,7 +17,6 @@ const getComment = {
           })
         }
       })
-
       // Map all logins to unique data template
       await logins.map((login) => {
         uniqueLogins.map((unique) => {
@@ -29,7 +28,6 @@ const getComment = {
           }
         })
       })
-
       return comments
     } catch (e) {
       console.log(e)
@@ -37,4 +35,4 @@ const getComment = {
   },
 }
 
-module.exports = getComment
+module.exports = unique

@@ -14,8 +14,11 @@ const http = axios.create({
   },
 })
 
-// general purpose "GET"
 const get = {
+  /**
+   * HTTP get method to fetch data with endpoint
+   * @param  {} url
+   */
   async get(url) {
     try {
       // Send URL request
