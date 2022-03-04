@@ -4,7 +4,7 @@ const config = require('../config')
 const chalk = require('chalk')
 
 // Github API URL
-const baseURL = 'https://api.github.com/repos/'
+const baseURL = config.GITHUB_BASE_URL
 
 // create HTTPS request
 const http = axios.create({

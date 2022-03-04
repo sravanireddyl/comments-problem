@@ -1,7 +1,7 @@
 let path = {
-  comments: '/comments?page=1&per_page=100000000',
-  issues: '/issues/comments?page=1&per_page=100000000',
-  pulls: '/pulls/comments?page=1&per_page=100000000',
+  comments: '/comments?page=1&per_page=100',
+  issues: '/issues/comments?page=1&per_page=100',
+  pulls: '/pulls/comments?page=1&per_page=100',
   stats: '/stats/contributors',
 }
 
