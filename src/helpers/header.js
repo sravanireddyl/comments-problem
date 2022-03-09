@@ -23,18 +23,12 @@ const header = {
     try {
       // Check if more pages exist
       if (link !== undefined) {
-        nextURL = await link.substring(
-          link.indexOf(nextBegin),
-          link.indexOf(nextEnd),
-        )
-        lastURL = await link.substring(
-          link.indexOf(lastBegin),
-          link.indexOf(lastEnd),
-        )
+        nextURL = link.substring(link.indexOf(nextBegin), link.indexOf(nextEnd))
+        lastURL = link.substring(link.indexOf(lastBegin), link.indexOf(lastEnd))
 
         // Create new strings of "next" & "last" URLs
-        next = await nextURL.replace(nextBegin, '')
-        last = await lastURL.replace(lastBegin, '')
+        next = nextURL.replace(nextBegin, '')
+        last = lastURL.replace(lastBegin, '')
       }
 
       if (last.length > 0 && next.length > 0) {

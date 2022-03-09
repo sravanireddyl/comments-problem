@@ -25,13 +25,13 @@ const path = {
 
     try {
       // First add routes we know we need
-      await routes.push(next, last)
+      routes.push(next, last)
 
       // Inject remaining routes between "next" & "last"
       if (diff > 1) {
         for (let i = nextInt + 1; i < lastInt; i++) {
           url = start + i + finish
-          await routes.push(url)
+          routes.push(url)
         }
       }
 
@@ -47,7 +47,7 @@ const path = {
         })
 
         // Map to logins array
-        await jsonArray.map((json) => {
+        jsonArray.map((json) => {
           json.data.map((data) => {
             let fetchDate = new Date(data.created_at)
 
@@ -66,7 +66,7 @@ const path = {
         })
 
         // Map to logins array
-        await jsonArray.map((json) => {
+        jsonArray.map((json) => {
           json.data.map((data) => {
             if (data.user['login']) {
               logins.push(data.user['login'])

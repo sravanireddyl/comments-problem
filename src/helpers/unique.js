@@ -5,7 +5,7 @@ const unique = {
 
     try {
       // Create unique array of logins & data template
-      await logins.map((login) => {
+      logins.map((login) => {
         if (!uniqueLogins.includes(login)) {
           uniqueLogins.push(login)
 
@@ -18,7 +18,7 @@ const unique = {
         }
       })
       // Map all logins to unique data template
-      await logins.map((login) => {
+      logins.map((login) => {
         uniqueLogins.map((unique) => {
           if (login === unique) {
             let index = comments.findIndex(

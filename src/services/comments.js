@@ -6,7 +6,6 @@ const chalk = require('chalk')
 */
 
 const comments = {
-
   /**
    * Fetch comments by using repo and isoString
    * Handle response , sort and group by Users
@@ -97,7 +96,6 @@ const comments = {
       return sortedUsers
     } catch (err) {
       console.error(chalk.red(err))
-
     }
   },
 }

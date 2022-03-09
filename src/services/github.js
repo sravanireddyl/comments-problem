@@ -5,7 +5,7 @@ const chalk = require('chalk')
 
 const github = {
   /**
-   * 
+   *
    * @param  {} route
    * @param  {} since
    * Gets comments from GitHub
@@ -31,7 +31,7 @@ const github = {
         }
 
         // Filter first request by Date/Time
-        await response.data.map((stats) => {
+        response.data.map((stats) => {
           let fetchDate = new Date(stats.created_at)
           if (fetchDate > date) {
             if (stats.user['login']) {
@@ -75,7 +75,7 @@ const github = {
           logins = [...remainingLogins]
         }
 
-        await json.data.map((stats) => {
+        json.data.map((stats) => {
           if (stats.user['login']) {
             firstLogins.push(stats.user['login'])
           }
@@ -106,7 +106,7 @@ const github = {
       // If we have a response
       if (json && json.statusText === 'OK') {
         // Create JSON schema template
-        await json.data.map((stats) => {
+        json.data.map((stats) => {
           if (stats.author['login']) {
             totals.push({
               login: stats.author['login'],
