@@ -47,24 +47,24 @@ const comments = {
       }
 
       if (stats.length) {
-        await responses.push(stats)
+        responses.push(stats)
       }
 
       // Add pages of array objects to one uniform array
-      await responses.map((response) => {
+      responses.map((response) => {
         response.map((data) => {
           users.push(data)
         })
       })
 
-      await users.map((user) => {
+      users.map((user) => {
         if (!uniq.includes(user.login)) {
           uniq.push(user.login)
         }
       })
 
       // Return combined user data
-      await uniq.map((login, i) => {
+      uniq.map((login, i) => {
         users.map((user) => {
           // Set first loop values
           let comments = 0
@@ -93,7 +93,7 @@ const comments = {
       })
 
       // Sort by Comments
-      let sortedUsers = await uniq.sort((a, b) => b.comments - a.comments)
+      let sortedUsers = uniq.sort((a, b) => b.comments - a.comments)
       return sortedUsers
     } catch (err) {
       console.error(chalk.red(err))
