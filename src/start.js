@@ -1,20 +1,22 @@
 const argv = require('yargs').argv
 const chalk = require('chalk')
-const getComments = require('./helpers/comments');
+const Comments = require('./services/comments')
 const output = require('./helpers/output')
+
 async function start() {
   try {
-    const repo = argv.repo;
-    const period = argv.period;
-    let days = 0;
+    const repo = argv.repo
+    const period = argv.period
+    let days = 0
     if (repo) {
       // validate "--period"
       if (typeof period === 'string' && period.includes('d')) {
         days = period.replace(/([d])/g, '')
-      }else {
-        days = period;
+      } else {
+        days = period
       }
       // convert "days" to number
+      // eslint-disable-next-line radix
       const time = parseInt(days, 0)
       let isoString = ''
 
@@ -24,15 +26,14 @@ async function start() {
         date.setDate(date.getDate() - time)
         isoString = date.toISOString().replace(/(\..*)/g, 'Z')
       }
-      const data = await getComments(repo, isoString);
-      output(data);
+      const data = await Comments.getCount(repo, isoString)
+      output.output(data)
     } else {
       console.log('\nInvalid repo, please try again')
     }
   } catch (err) {
     console.error(chalk.red(err))
-
   }
 }
 
-start();
+start()
