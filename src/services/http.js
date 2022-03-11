@@ -14,7 +14,7 @@ const http = axios.create({
   },
 })
 
-const get = {
+const httpService = {
   /**
    * HTTP get method to fetch data with endpoint
    * @param  {} url
@@ -32,4 +32,4 @@ const get = {
   },
 }
 
-module.exports = get
+module.exports = httpService

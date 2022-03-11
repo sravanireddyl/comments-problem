@@ -1,6 +1,6 @@
 const unique = require('../helpers/unique')
 const header = require('../helpers/header')
-const get = require('./get')
+const httpService = require('./http')
 const chalk = require('chalk')
 
 const github = {
@@ -17,7 +17,7 @@ const github = {
     let firstLogins = []
     let remainingLogins = []
     try {
-      let response = await get.get(route)
+      let response = await httpService.get(route)
       // If we have a response
       if (response && response.statusText === 'OK') {
         const headers = response.headers
@@ -63,7 +63,7 @@ const github = {
     let remainingLogins = []
 
     try {
-      const json = await get.get(route)
+      const json = await httpService.get(route)
 
       // If we have a response
       if (json && json.statusText === 'OK') {
@@ -101,7 +101,7 @@ const github = {
     const totals = []
 
     try {
-      const json = await get.get(route)
+      const json = await httpService.get(route)
 
       // If we have a response
       if (json && json.statusText === 'OK') {

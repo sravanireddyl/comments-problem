@@ -1,4 +1,4 @@
-const get = require('../services/get')
+const httpService = require('../services/http')
 const chalk = require('chalk')
 
 const path = {
@@ -41,7 +41,7 @@ const path = {
 
         // Fetch every URL simulataneously
         let jsonArray = await Promise.all(
-          urls.map((url) => get.get(url)),
+          urls.map((url) => httpService.get(url)),
         ).catch((e) => {
           console.error(chalk.red(e))
         })
@@ -60,7 +60,7 @@ const path = {
       } else {
         // Fetch every URL simulataneously
         let jsonArray = await Promise.all(
-          routes.sort().map((route) => get.get(route)),
+          routes.sort().map((route) => httpService.get(route)),
         ).catch((e) => {
           console.error(chalk.red(e))
         })
